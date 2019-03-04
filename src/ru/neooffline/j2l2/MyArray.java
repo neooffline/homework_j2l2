@@ -1,27 +1,45 @@
 package ru.neooffline.j2l2;
 
-public class MyArray {
-    private String[][] myArray;
+import java.util.InputMismatchException;
+
+public class MyArray extends Exception{
+    private final int ARRAYLENGHT = 4;
+    private boolean emptyArray;
+    private int[][] myArray;
     public MyArray(){
-        this.myArray = new String[4][4];
+        this.myArray = new int[ARRAYLENGHT][ARRAYLENGHT];
+        this.emptyArray = true;
     }
     public void getArray(String[][] strArray){
         try{
             for (int i = 0; i < strArray.length; i++) {
-                for (int j = 0; j < strArray.length; j++) {
-                    this.myArray[i][j] = strArray[i][j];
+                for (int j = 0; j < strArray[i].length; j++) {
+                    try {
+                        this.myArray[i][j] = Integer.parseInt(strArray[i][j]);
+                        this.emptyArray = false;
+                    } catch (NumberFormatException ex){
+                        ex.printStackTrace();
+                        this.emptyArray = true;
+                    }
                 }
             }
+            this.emptyArray = false;
         } catch (ArrayIndexOutOfBoundsException ex){
-            System.out.println("ÐžÑˆÐ¸Ð±ÐºÐ° Ð´Ð»Ð¸Ð½Ð° Ð½Ðµ Ñ‚Ð°");
+            this.emptyArray = true;
+            System.out.println("Îøèáêà äëèíà íå òà");
+            ex.printStackTrace();
         }
     }
+
     public void printArray(){
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0;  j< 4 ; j++) {
-                System.out.printf("%s | ",this.myArray[i][j]);
-            }
+        for (int i = 0; i < this.myArray.length; i++) {
+            for (int j = 0;  j< this.myArray[i].length ; j++) {
+            if(!emptyArray){
+                System.out.printf("%s | ",this.myArray[i][j]);}
+        }
+            if(!emptyArray)
             System.out.println();
         }
     }
+
 }
