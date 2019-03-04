@@ -4,12 +4,17 @@ public class Main {
 
     public static void main(String[] args) {
         String[][] arr = {
-                {"44","22","42","olo"},
-                {"44","44","44","33"},
-                {"44","44","44","33"},
-                {"44","44","44","33"}};
-        MyArray myArray = new MyArray();
-        myArray.getArray(arr);
-        myArray.printArray();
+                {"2","11","11","11"},
+                {"22","22","22","22"},
+                {"33","33","dsd","33"},
+                {"44","44","44","44"}};
+        String[][] arr2 = {
+                {"2","11","11","11","11"},
+                {"22","22","22","22"},
+                {"33","33","33","33"},
+                {"44","44","44","44"}};
+        MyArraySum myArraySum = new MyArraySum();
+        System.out.printf("Сумма элементов массива = %d\n",myArraySum.getSum(arr2));
+        System.out.printf("Сумма элементов массива = %d\n",myArraySum.getSum(arr));
     }
 }
