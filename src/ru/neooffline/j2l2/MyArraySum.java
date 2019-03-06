@@ -15,8 +15,8 @@ public class MyArraySum extends Exception {
                 try {
                     sum += Integer.parseInt(strArray[i][j]);
                 } catch (NumberFormatException ex) {
-                    throw new MyArrayDataException("в ячейке: " + (i + 1) + " - " + (j + 1)
-                            + " несоответсвующий тип данных");
+                    throw new MyArrayDataException("РІ СЏС‡РµР№РєРµ: " + (i + 1) + " - " + (j + 1)
+                            + " РЅРµСЃРѕРѕС‚РІРµС‚СЃРІСѓСЋС‰РёР№ С‚РёРї РґР°РЅРЅС‹С…");
                 }
             }
         }
@@ -24,9 +24,12 @@ public class MyArraySum extends Exception {
     }
 
     private void checkArray(String[][] strArray) {
+        if (strArray.length != this.ARRAY_LENGTH) {
+            throw new MyArraySizeException("РѕС€РёР±РєР° РґР»РёРЅС‹ РјР°СЃСЃРёРІР°");
+        }
         for (int i = 0; i < strArray.length; i++) {
             if (strArray[i].length != this.ARRAY_LENGTH) {
-                throw new MyArraySizeException("ошибка длины массива");
+                throw new MyArraySizeException("РѕС€РёР±РєР° РґР»РёРЅС‹ РјР°СЃСЃРёРІР°");
             }
         }
     }
